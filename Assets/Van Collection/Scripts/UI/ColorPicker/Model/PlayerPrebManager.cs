@@ -12,7 +12,7 @@ public class PlayerPrebManager
     }
 
     //load
-    public static Color LoadColor(Color defaultColor)
+    public static Color LoadColor()
     {
         if (PlayerPrefs.HasKey("R"))
         {
@@ -21,7 +21,7 @@ public class PlayerPrebManager
             float b = PlayerPrefs.GetFloat("B");
             return new Color(r, g, b);
         }
-        return defaultColor;
+        return Color.white;
     }
 
 }
