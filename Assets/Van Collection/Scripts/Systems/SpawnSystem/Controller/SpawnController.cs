@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class SpawnController
@@ -114,8 +115,10 @@ public class SpawnController
                     if (Physics.CheckSphere(pos, 0.01f, settings.collisionMask))
                         continue;
 
+                    //用 PrefabUtility → 生成「藍色、有連結」的 Prefab 實例
+                    GameObject go = (GameObject)PrefabUtility.InstantiatePrefab(settings.prefab, parent);
+                    go.transform.SetPositionAndRotation(pos, Quaternion.identity);
 
-                    Object.Instantiate(settings.prefab, pos, Quaternion.identity, parent);
                     totalPlaced++;
                 }
 

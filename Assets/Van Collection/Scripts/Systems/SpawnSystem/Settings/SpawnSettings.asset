@@ -15,7 +15,7 @@ MonoBehaviour:
   gridXCount: 2
   gridYCount: 2
   prefab: {fileID: 7957604531557284710, guid: 1548b9f1c6d292544ac47f3095fbcb15, type: 3}
-  totalSpawnCount: 100
+  totalSpawnCount: 50
   collisionMask:
     serializedVersion: 2
     m_Bits: 2047
