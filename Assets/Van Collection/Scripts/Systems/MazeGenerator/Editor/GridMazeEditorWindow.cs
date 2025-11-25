@@ -14,6 +14,7 @@ public class GridMazeEditorWindow : EditorWindow
     public GameObject wallPrefab;
     public float overlap = 0.01f;
     public float extraRotationY = 0f;
+    public float extraScale = 1f;
     [Header("Group")]
     public Transform mazeParent;
     [Header("Terrain")]
@@ -45,6 +46,7 @@ public class GridMazeEditorWindow : EditorWindow
         EditorGUILayout.Space();
         wallPrefab = (GameObject)EditorGUILayout.ObjectField("Wall Prefab", wallPrefab, typeof(GameObject), false);
         extraRotationY = EditorGUILayout.FloatField("RotationY", extraRotationY);
+        extraScale = EditorGUILayout.FloatField("Scale", extraScale);
         overlap = EditorGUILayout.FloatField("Overlap", overlap);
         EditorGUILayout.Space();
         terrain = (Terrain)EditorGUILayout.ObjectField("Terrain", terrain, typeof(Terrain), true);
@@ -272,7 +274,7 @@ public class GridMazeEditorWindow : EditorWindow
     /// 用「每塊牆有效寬度 = tileSize - overlap」來算數量與位置
     private void CreateWallStrip(Vector3 cellCenter, Vector3 alongDir, Vector3 normalDir, float wallY, float rotationY = 0f)
     {
-        float tile = tileSize;
+        float tile = tileSize * Mathf.Max(0.0001f, extraScale);
 
         // 防呆：overlap 不要超過 tile 的 90%
         float clampedOverlap = Mathf.Clamp(overlap, 0f, tile * 0.9f);
@@ -298,6 +300,8 @@ public class GridMazeEditorWindow : EditorWindow
             GameObject wall = (GameObject)PrefabUtility.InstantiatePrefab(wallPrefab, mazeParent);
             wall.transform.position = pos;
             wall.transform.rotation = Quaternion.Euler(0f, rotationY, 0f);
+            // 真正把牆放大 / 縮小
+            wall.transform.localScale = Vector3.one * extraScale;
         }
     }
 
