@@ -271,15 +271,15 @@ public class GridMazeEditorWindow : EditorWindow
         }
     }
 
-    /// 用「每塊牆有效寬度 = tileSize - overlap」來算數量與位置
+    // 3D實體牆
     private void CreateWallStrip(Vector3 cellCenter, Vector3 alongDir, Vector3 normalDir, float wallY, float rotationY = 0f)
     {
         float tile = tileSize * Mathf.Max(0.0001f, extraScale);
 
-        // 防呆：overlap 不要超過 tile 的 90%
+        // 防呆：overlap ~ tile 的 90% ，clamp超過就是tile的90%寬
         float clampedOverlap = Mathf.Clamp(overlap, 0f, tile * 0.9f);
 
-        // 每一塊牆實際佔據的有效寬度（算 spacing 用）
+        // 每一塊牆實際佔據的有效寬度,max為防呆
         float effectiveTile = Mathf.Max(0.0001f, tile - clampedOverlap);
 
         // 需要幾塊才能覆蓋整個 cellSize（寧可多一點點）
@@ -287,10 +287,9 @@ public class GridMazeEditorWindow : EditorWindow
 
         for (int i = 0; i < segmentCount; i++)
         {
-            // 第一塊中心在左側：-cellSize/2 + tile/2
-            // 之後每塊往 alongDir 方向移動 effectiveTile
+            // 第一塊中心在左側：-cellSize(總長度)/2 + tile/2
             float offset = -cellSize * 0.5f + tile * 0.5f + i * effectiveTile;
-
+            // 之後每塊往 alongDir 方向移動 effectiveTile
             Vector3 pos = cellCenter
                           + alongDir * offset
                           + normalDir * (cellSize * 0.5f);

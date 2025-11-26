@@ -13,7 +13,7 @@ public class PrefabPreviewTool : EditorWindow
     float baseDistance = 3f; // 根據模型 bounds 計算出來的基準距離
 
 
-    [MenuItem("Tools/PrefabPreview Tool")]
+    [MenuItem("Tools/練習PrefabPreview")]
     public static void ShowWindow()
     {
         GetWindow<PrefabPreviewTool>("PrefabPreview Tool");
