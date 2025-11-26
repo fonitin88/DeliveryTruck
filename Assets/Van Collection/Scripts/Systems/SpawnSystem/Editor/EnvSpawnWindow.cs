@@ -9,7 +9,7 @@ public class EnvSpawnWindow : EditorWindow
     private Vector2 scroll;
     private Terrain sceneTerrain; //這是場景的 Terrain 
 
-    [MenuItem("Tools/Terrain Spawn")]
+    [MenuItem("Tools/Pickup item Spawn")]
     public static void ShowWindow()
     {
         GetWindow<EnvSpawnWindow>("Terrain Spawn");
