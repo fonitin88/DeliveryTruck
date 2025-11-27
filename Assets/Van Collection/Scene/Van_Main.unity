@@ -51927,7 +51927,7 @@ MonoBehaviour:
   TimerContainer: {fileID: 2132154578}
   BonusContainer: {fileID: 524026127}
   timeText: {fileID: 1921849046}
-  startTime: 10
+  startTime: 100
   TimesupUI: {fileID: 1761117052}
 --- !u!1 &1475782943
 GameObject:
@@ -52687,6 +52687,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8201158366777370530, guid: 0924618bec4e6bb40885c6341578a853, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1505730008}
+    - targetCorrespondingSourceObject: {fileID: 8201158366777370530, guid: 0924618bec4e6bb40885c6341578a853, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1505730009}
   m_SourcePrefab: {fileID: 100100000, guid: 0924618bec4e6bb40885c6341578a853, type: 3}
 --- !u!4 &1505730006 stripped
 Transform:
@@ -52712,6 +52715,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellCoords: {x: 0, y: 0}
   normal: {x: 0, y: 0, z: 1}
+--- !u!205 &1505730009
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505730007}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1001 &1507069331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75052,6 +75079,22 @@ PrefabInstance:
     - target: {fileID: 2504032150301010451, guid: 32f94950e3aa892459dd3e38be9d5906, type: 3}
       propertyPath: m_LocalPosition.x
       value: 100.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3455840172009498747, guid: 32f94950e3aa892459dd3e38be9d5906, type: 3}
+      propertyPath: m_VoxelSize
+      value: 0.16666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 3455840172009498747, guid: 32f94950e3aa892459dd3e38be9d5906, type: 3}
+      propertyPath: m_AgentTypeID
+      value: -1372625422
+      objectReference: {fileID: 0}
+    - target: {fileID: 3455840172009498747, guid: 32f94950e3aa892459dd3e38be9d5906, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 4d595750de7a54d498fa4ba06cddd11c, type: 2}
+    - target: {fileID: 3455840172009498747, guid: 32f94950e3aa892459dd3e38be9d5906, type: 3}
+      propertyPath: m_LayerMask.m_Bits
+      value: 2167
       objectReference: {fileID: 0}
     - target: {fileID: 3641220498151645078, guid: 32f94950e3aa892459dd3e38be9d5906, type: 3}
       propertyPath: m_Name
