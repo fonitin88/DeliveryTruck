@@ -12,20 +12,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7ec74e820a1b4b49994b72367a38a20, type: 3}
   m_Name: SpawnSettings
   m_EditorClassIdentifier: 
-  gridXCount: 2
-  gridYCount: 2
-  prefab: {fileID: 7957604531557284710, guid: 1548b9f1c6d292544ac47f3095fbcb15, type: 3}
-  totalSpawnCount: 50
+  gridXCount: 5
+  gridYCount: 5
+  prefab: {fileID: 2551505738583542599, guid: f662902e271829349930bf13354c0f4c, type: 3}
+  totalSpawnCount: 100
   collisionMask:
     serializedVersion: 2
-    m_Bits: 2047
+    m_Bits: 1
   parentRoot: {fileID: 0}
   regions:
   - gridIndex: {x: 0, y: 0}
     density: 0.5
   - gridIndex: {x: 1, y: 0}
     density: 0.5
+  - gridIndex: {x: 2, y: 0}
+    density: 0.5
+  - gridIndex: {x: 3, y: 0}
+    density: 0.5
+  - gridIndex: {x: 4, y: 0}
+    density: 0.5
   - gridIndex: {x: 0, y: 1}
     density: 0.5
   - gridIndex: {x: 1, y: 1}
+    density: 0.5
+  - gridIndex: {x: 2, y: 1}
+    density: 0.5
+  - gridIndex: {x: 3, y: 1}
+    density: 0.5
+  - gridIndex: {x: 4, y: 1}
+    density: 0.5
+  - gridIndex: {x: 0, y: 2}
+    density: 0.5
+  - gridIndex: {x: 1, y: 2}
+    density: 0.5
+  - gridIndex: {x: 2, y: 2}
+    density: 0.5
+  - gridIndex: {x: 3, y: 2}
+    density: 0.5
+  - gridIndex: {x: 4, y: 2}
+    density: 0.5
+  - gridIndex: {x: 0, y: 3}
+    density: 0.5
+  - gridIndex: {x: 1, y: 3}
+    density: 0.5
+  - gridIndex: {x: 2, y: 3}
+    density: 0.5
+  - gridIndex: {x: 3, y: 3}
+    density: 0.5
+  - gridIndex: {x: 4, y: 3}
+    density: 0.5
+  - gridIndex: {x: 0, y: 4}
+    density: 0.5
+  - gridIndex: {x: 1, y: 4}
+    density: 0.5
+  - gridIndex: {x: 2, y: 4}
+    density: 0.5
+  - gridIndex: {x: 3, y: 4}
+    density: 0.5
+  - gridIndex: {x: 4, y: 4}
     density: 0.5

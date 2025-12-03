@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridXCount: 5
   gridYCount: 5
-  prefab: {fileID: 6681041824387784792, guid: 0a6f6120b41225b44be53fe39b977a0d, type: 3}
-  totalSpawnCount: 50
+  prefab: {fileID: 5559656464343489250, guid: b753f0c5a144d3542b0d3a1ffd6019c9, type: 3}
+  totalSpawnCount: 80
   collisionMask:
     serializedVersion: 2
-    m_Bits: 2047
+    m_Bits: 5
   parentRoot: {fileID: 0}
   regions:
   - gridIndex: {x: 0, y: 0}

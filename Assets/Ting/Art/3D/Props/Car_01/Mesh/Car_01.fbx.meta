@@ -7,6 +7,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Car01
+    second: {fileID: 2100000, guid: f0a0c3e1ea228634ab50a37e7920b106, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Car01_Wheel
+    second: {fileID: 2100000, guid: 9f07f39e8ce5d6b40a2a14675d6c3e3c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: M_Car01
     second: {fileID: 2100000, guid: f0a0c3e1ea228634ab50a37e7920b106, type: 2}
   - first:
