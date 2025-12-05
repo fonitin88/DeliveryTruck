@@ -21,10 +21,10 @@ public class ColorController : MonoBehaviour
         colorView.UpdateColor(colorData.seletedColor);
 
         //按鈕寫上功能
-        redBtn.onClick.AddListener(() => OnColorSelected(Color.red));
-        yellowBtn.onClick.AddListener(() => OnColorSelected(Color.yellow));
-        blueBtn.onClick.AddListener(() => OnColorSelected(Color.blue));
-        resetBtn.onClick.AddListener(() => OnColorSelected(Color.white));
+        redBtn.onClick.AddListener(() => OnColorSelected(new Color(1.000f, 0.231f, 0.486f, 1.000f)));
+        yellowBtn.onClick.AddListener(() => OnColorSelected(new Color(1.000f, 0.816f, 0.000f, 1.000f)));
+        blueBtn.onClick.AddListener(() => OnColorSelected(new Color(0.039f, 0.302f, 0.792f, 1.000f)));
+        resetBtn.onClick.AddListener(() => OnColorSelected(new Color(0.000f, 0.655f, 0.510f, 1.000f)));
 
     }
     //選了顏色後更新到data / view / save

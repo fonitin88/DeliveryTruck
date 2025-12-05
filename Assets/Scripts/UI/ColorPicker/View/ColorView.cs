@@ -33,7 +33,7 @@ public class ColorView : MonoBehaviour
     {
         if (materailInstance != null)
         {
-            materailInstance.SetColor("_MainColor", color);
+            materailInstance.SetColor("_TargetColor", color);
         }
     }
 

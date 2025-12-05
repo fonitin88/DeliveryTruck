@@ -45,7 +45,9 @@ public class TImeManager : MonoBehaviour
     {
         if (gameOver) return;
         timeLeft -= Time.deltaTime;
-        timeText.text = timeLeft.ToString("F1");
+        int seconds = Mathf.CeilToInt(timeLeft);
+        //一個是除與60=1分鐘 後面是取餘數
+        timeText.text = $"{seconds / 60:00}:{seconds % 60:00}";
         if (timeLeft <= 0f)
         {
             PlayerGameOver();

@@ -34,7 +34,7 @@ public class RotateOnDrag : MonoBehaviour
             if (currentY > 180f) currentY -= 360f;
             //這是總量的角度
             float newY = currentY + rotateAmount;
-            newY = Mathf.Clamp(newY, -20f, 66f);
+            newY = Mathf.Clamp(newY, -60f, 65f);
 
             transform.rotation = Quaternion.Euler(0f, newY, 0f);
 

@@ -12,6 +12,6 @@ public class BonusManager : MonoBehaviour
     {
         score += amount;
         BonusText.text = score.ToString();
-        GiftText.text = "+" + score.ToString();
+        GiftText.text = score.ToString();
     }
 }

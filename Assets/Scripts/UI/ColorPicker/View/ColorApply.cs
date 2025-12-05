@@ -15,7 +15,7 @@ public class ColorApply : MonoBehaviour
         }
         if (targetRender != null)
         {
-            targetRender.material.SetColor("_MainColor", colorData.seletedColor);
+            targetRender.material.SetColor("_TargetColor", colorData.seletedColor);
         }
     }
 
