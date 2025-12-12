@@ -5,6 +5,7 @@ public class PlayerPrebManager
     //save
     public static void SaveColor(Color color)
     {
+        // PlayerPrefs永久儲存
         PlayerPrefs.SetFloat("R", color.r);
         PlayerPrefs.SetFloat("G", color.g);
         PlayerPrefs.SetFloat("B", color.b);

@@ -15,7 +15,7 @@ public class Maze
         public bool westWall;
     }
 
-    // 從 Prefab 抓實際尺寸
+    // 從 Prefab 抓實際尺寸，用renderer.bounds
     public static bool TryGetPrefabMetrics(GameObject wallPrefab, out float tileSize)
     {
         tileSize = 1f;//一定要有一個值
@@ -25,7 +25,7 @@ public class Maze
         tileSize = Mathf.Max(renderer.bounds.size.x, renderer.bounds.size.z);
         return true;
     }
-    // 把 cellSize 對齊成 tile 的整數倍
+    // 對齊格子:把 cellSize 對齊成 tile 的整數倍
     public static float SnapCellSizeToTile(float cellSize, float tileSize)
     {
         if (tileSize <= 0f) return cellSize;//防呆

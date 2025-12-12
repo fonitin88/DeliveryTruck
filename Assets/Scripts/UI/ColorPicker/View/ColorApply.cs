@@ -9,6 +9,7 @@ public class ColorApply : MonoBehaviour
     void Awake()
     {
         //替代顏色GetComponent<Renderer>()
+        //自動抓 Renderer，避免忘記在 Inspector 指派
         if (targetRender == null)
         {
             targetRender = GetComponent<Renderer>();
