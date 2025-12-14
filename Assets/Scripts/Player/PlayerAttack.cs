@@ -11,11 +11,20 @@ public class PlayerAttack : MonoBehaviour
     {
         if (input.isPressed)
         {
-            GameObject fx = Instantiate(FX_Lightray, FXShootPos.position, transform.rotation);
-            fx.transform.SetParent(FXShootPos);
-
-            Destroy(fx, 0.5f);
+            DoAttack();
         }
+    }
+    public void OnShootButton()
+    {
+        DoAttack();
+    }
+
+    void DoAttack()
+    {
+        GameObject fx = Instantiate(FX_Lightray, FXShootPos.position, transform.rotation);
+        fx.transform.SetParent(FXShootPos);
+
+        Destroy(fx, 0.5f);
     }
 
 
