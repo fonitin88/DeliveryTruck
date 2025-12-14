@@ -73,7 +73,6 @@ public class Van_PlayerMovement : MonoBehaviour
             rb.MovePosition(rb.position + move);
 
         }
-        Debug.Log("這是transform.rotation" + transform.rotation);
     }
 
 
