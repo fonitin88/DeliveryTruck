@@ -1,46 +1,72 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+
 
 public class RotateOnDrag : MonoBehaviour
 {
-    public float rotateSpeed = 0.3f;
+    [SerializeField] float rotateSpeed = 0.3f;
+    [SerializeField] float minY = -60f;
+    [SerializeField] float maxY = 65f;
 
     bool dragging;
-    Vector3 lastMousePos;//這是滑鼠的
+    Vector2 lastPos;
 
     void Update()
     {
-        // 按下滑鼠左鍵開始拖曳
-        if (Input.GetMouseButtonDown(0))
+        // --- Touch (Mobile/WebGL mobile browser) ---
+        if (Touchscreen.current != null)
+        {
+            var touch = Touchscreen.current.primaryTouch;
+
+            if (touch.press.wasPressedThisFrame)
+            {
+                dragging = true;
+                lastPos = touch.position.ReadValue();
+            }
+
+            if (dragging && touch.press.isPressed)
+            {
+                Vector2 pos = touch.position.ReadValue();
+                ApplyRotate(pos);
+            }
+
+            if (touch.press.wasReleasedThisFrame)
+                dragging = false;
+
+            return; // 有觸控裝置就不要再走滑鼠
+        }
+
+        // --- Mouse (Desktop Web) ---
+        if (Mouse.current == null) return;
+
+        if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             dragging = true;
-            lastMousePos = Input.mousePosition;//開始拖曳的瞬間，滑鼠在螢幕上的座標位置
+            lastPos = Mouse.current.position.ReadValue();
         }
 
-        // 放開滑鼠左鍵停止
-        if (Input.GetMouseButtonUp(0))
+        if (dragging && Mouse.current.leftButton.isPressed)
         {
+            Vector2 pos = Mouse.current.position.ReadValue();
+            ApplyRotate(pos);
+        }
+
+        if (Mouse.current.leftButton.wasReleasedThisFrame)
             dragging = false;
-        }
+    }
+    //旋轉
+    void ApplyRotate(Vector2 pos)
+    {
+        Vector2 delta = pos - lastPos;
+        lastPos = pos;
 
-        if (dragging)
-        {
-            //計算滑鼠的移動量滑鼠，只會左右移動X軸
-            //為了Input.mousePosition是vector3 所以都用vector3
-            Vector3 delta = Input.mousePosition - lastMousePos;
-            // 計算每一幀的旋轉量
-            float rotateAmount = -delta.x * rotateSpeed;
-            float currentY = transform.eulerAngles.y;
-            // 把 0~360 轉成 -180~180，避免跳值
-            if (currentY > 180f) currentY -= 360f;
-            //這是總量的角度
-            float newY = currentY + rotateAmount;
-            newY = Mathf.Clamp(newY, -60f, 65f);
+        float rotateAmount = -delta.x * rotateSpeed;
 
-            transform.rotation = Quaternion.Euler(0f, newY, 0f);
+        float currentY = transform.eulerAngles.y;
+        if (currentY > 180f) currentY -= 360f;
 
-            //把本幀的滑鼠位置，記起來給下一幀比較用
-            lastMousePos = Input.mousePosition;
-        }
-
+        float newY = Mathf.Clamp(currentY + rotateAmount, minY, maxY);
+        transform.rotation = Quaternion.Euler(0f, newY, 0f);
     }
 }
