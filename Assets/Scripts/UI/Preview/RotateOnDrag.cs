@@ -14,30 +14,40 @@ public class RotateOnDrag : MonoBehaviour
 
     void Update()
     {
-        // --- Touch (Mobile/WebGL mobile browser) ---
+
+        // --- Touch ---
         if (Touchscreen.current != null)
         {
             var touch = Touchscreen.current.primaryTouch;
 
-            if (touch.press.wasPressedThisFrame)
+            // ✅ 只有真的在按 / 剛放開 / 剛按下，才處理 touch
+            bool hasTouchInput =
+                touch.press.wasPressedThisFrame ||
+                touch.press.isPressed ||
+                touch.press.wasReleasedThisFrame;
+
+            if (hasTouchInput)
             {
-                dragging = true;
-                lastPos = touch.position.ReadValue();
+                if (touch.press.wasPressedThisFrame)
+                {
+                    dragging = true;
+                    lastPos = touch.position.ReadValue();
+                }
+
+                if (dragging && touch.press.isPressed)
+                {
+                    Vector2 pos = touch.position.ReadValue();
+                    ApplyRotate(pos);
+                }
+
+                if (touch.press.wasReleasedThisFrame)
+                    dragging = false;
+
+                return; // ✅ 只有「這一幀真的在用 touch」才 return
             }
-
-            if (dragging && touch.press.isPressed)
-            {
-                Vector2 pos = touch.position.ReadValue();
-                ApplyRotate(pos);
-            }
-
-            if (touch.press.wasReleasedThisFrame)
-                dragging = false;
-
-            return; // 有觸控裝置就不要再走滑鼠
         }
 
-        // --- Mouse (Desktop Web) ---
+        // --- Mouse ---
         if (Mouse.current == null) return;
 
         if (Mouse.current.leftButton.wasPressedThisFrame)

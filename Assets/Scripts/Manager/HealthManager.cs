@@ -18,7 +18,7 @@ public class HealthManager : MonoBehaviour
 
     void UpdateUI(int current)
     {
-        HealthText.text = current.ToString("D3");
+        HealthText.text = current.ToString("D2");
         slider.value = current;
     }
 }

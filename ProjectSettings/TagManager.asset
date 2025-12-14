@@ -16,7 +16,7 @@ TagManager:
   - Player
   - Enemies
   - Terrain
-  - 
+  - CameraBounds
   - 
   - 
   - 
@@ -42,6 +42,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 2709417615
     locked: 0
   m_RenderingLayers:
   - Default
