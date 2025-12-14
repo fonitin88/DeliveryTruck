@@ -17152,6 +17152,7 @@ RectTransform:
   - {fileID: 524026128}
   - {fileID: 2132154579}
   - {fileID: 1999351616}
+  - {fileID: 1662497954}
   - {fileID: 1490268426}
   - {fileID: 670156886}
   - {fileID: 3467753486405110875}
@@ -17159,7 +17160,6 @@ RectTransform:
   - {fileID: 1761117053}
   - {fileID: 702362137}
   - {fileID: 435850526}
-  - {fileID: 1662497954}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -48061,7 +48061,7 @@ GameObject:
   - component: {fileID: 1490268428}
   - component: {fileID: 1490268427}
   m_Layer: 5
-  m_Name: Image
+  m_Name: MiniMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53459,7 +53459,7 @@ GameObject:
   - component: {fileID: 1662497956}
   - component: {fileID: 1662497955}
   m_Layer: 5
-  m_Name: Button
+  m_Name: hit_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
