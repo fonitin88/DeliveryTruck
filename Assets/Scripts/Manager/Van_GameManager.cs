@@ -32,12 +32,13 @@ public class Van_GameManager : MonoBehaviour
     public void PlayButton()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(1);
+        SceneLoader.Load("Van_Main");
+
     }
 
     public void BackToMainButton()
     {
-        SceneManager.LoadScene(0);
+        SceneLoader.Load("Menu");
     }
 
 }
