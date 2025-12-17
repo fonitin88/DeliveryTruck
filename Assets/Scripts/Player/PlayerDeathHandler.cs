@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerDeathHandler : MonoBehaviour
@@ -13,6 +14,11 @@ public class PlayerDeathHandler : MonoBehaviour
     void HandleGameOver()
     {
         Time.timeScale = 0f;
+        StartCoroutine(UIdelay());
+    }
+    IEnumerator UIdelay()
+    {
+        yield return new WaitForSecondsRealtime(1f);
         GameOverUI.SetActive(true);
     }
 }
