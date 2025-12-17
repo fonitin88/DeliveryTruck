@@ -6,7 +6,7 @@ public class VFX_Damage : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("VFX hit: " + other.name);
+        //有沒有實作 IDamageable 的 component
         IDamageable target = other.GetComponent<IDamageable>();
         if (target != null)
         {

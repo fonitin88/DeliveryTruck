@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FX_Lightray: {fileID: 194706, guid: 9a993b24d21e2f644948d9f89f5a331d, type: 3}
+  Playerhitbox: {fileID: 2494135099849791345, guid: f57a4dd0b01a7f54993afefe675959ac, type: 3}
   FXShootPos: {fileID: 24226936529347251}
 --- !u!114 &1795635217218473031
 MonoBehaviour:
@@ -356,6 +357,10 @@ PrefabInstance:
     - target: {fileID: 3991927805061715772, guid: 8bc937eead2eda64ea194de92fc0292e, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991927805061715772, guid: 8bc937eead2eda64ea194de92fc0292e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5767777049657041837, guid: 8bc937eead2eda64ea194de92fc0292e, type: 3}
       propertyPath: m_LocalPosition.x

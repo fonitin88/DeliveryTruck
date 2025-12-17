@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,8 +6,10 @@ using UnityEngine.InputSystem;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] GameObject FX_Lightray;
+    [SerializeField] GameObject Playerhitbox;
     [SerializeField] Transform FXShootPos;
-
+    [SerializeField] float cooldown = 0.5f;
+    bool canAttack = true;
     public void OnShoot(InputValue input)
     {
         if (input.isPressed)
@@ -18,13 +21,22 @@ public class PlayerAttack : MonoBehaviour
     {
         DoAttack();
     }
-
     void DoAttack()
     {
-        GameObject fx = Instantiate(FX_Lightray, FXShootPos.position, transform.rotation);
-        fx.transform.SetParent(FXShootPos);
+        if (!canAttack) return;
+        StartCoroutine(AttackRoutine());
+    }
 
-        Destroy(fx, 0.5f);
+    IEnumerator AttackRoutine()
+    {
+        canAttack = false;
+        var hitbox = Instantiate(Playerhitbox, FXShootPos.position, transform.rotation, FXShootPos);
+        var fx = Instantiate(FX_Lightray, FXShootPos.position, transform.rotation, FXShootPos);
+        yield return new WaitForSeconds(cooldown);
+        Destroy(hitbox);
+        Destroy(fx);
+
+        canAttack = true;
     }
 
 
