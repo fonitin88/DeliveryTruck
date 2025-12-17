@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,11 +12,16 @@ public class Van_PlayerMovement : MonoBehaviour
     Vector2 movementInput;
     Rigidbody rb;
     Quaternion targetRotation;
+    //speed
+    float baseMoveSpeed;
+    Coroutine speedUpCo;
+
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         targetRotation = transform.rotation;
+        baseMoveSpeed = moveSpeed;// 記住原始速度
     }
     //給 Input System 鍵盤/手把用的
     public void OnMove(InputValue value)
@@ -73,8 +79,22 @@ public class Van_PlayerMovement : MonoBehaviour
             rb.MovePosition(rb.position + move);
 
         }
+
+    }
+    public void SpeedUP(float multiplier, float duration)
+    {
+
+        if (speedUpCo != null) StopCoroutine(speedUpCo);
+        speedUpCo = StartCoroutine(SpeedUpRoutine(multiplier, duration));
     }
 
+    IEnumerator SpeedUpRoutine(float multiplier, float duration)
+    {
+        moveSpeed = baseMoveSpeed * multiplier;
+        yield return new WaitForSeconds(duration);
+        moveSpeed = baseMoveSpeed;
+        speedUpCo = null;
+    }
 
 
 }
