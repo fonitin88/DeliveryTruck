@@ -50,8 +50,8 @@ public class MazeDecoratorTab
         OffsetMin = EditorGUILayout.FloatField("Min", OffsetMin);
         OffsetMax = EditorGUILayout.FloatField("Max", OffsetMax);
         EditorGUILayout.LabelField("Scale Range");
-        OffsetMin = EditorGUILayout.FloatField("Min", ScaleMin);
-        OffsetMax = EditorGUILayout.FloatField("Max", ScaleMax);
+        ScaleMin = EditorGUILayout.FloatField("Min", ScaleMin);
+        ScaleMax = EditorGUILayout.FloatField("Max", ScaleMax);
 
         GUILayout.Space(4);
         GUILayout.BeginHorizontal();
