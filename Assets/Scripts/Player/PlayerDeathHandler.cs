@@ -12,8 +12,6 @@ public class PlayerDeathHandler : MonoBehaviour
 
     void HandleGameOver()
     {
-        Debug.Log("GG");
-        TImeManager.Instance.HideTimer();
         Time.timeScale = 0f;
         GameOverUI.SetActive(true);
     }

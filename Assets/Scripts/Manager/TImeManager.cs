@@ -1,12 +1,10 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class TImeManager : MonoBehaviour
 {
     public static TImeManager Instance { get; private set; }
-
-    [SerializeField] GameObject TimerContainer;
-    [SerializeField] GameObject BonusContainer;
     [SerializeField] TMP_Text timeText;
     [SerializeField] float startTime = 5f;
     [SerializeField] GameObject TimesupUI;
@@ -29,7 +27,6 @@ public class TImeManager : MonoBehaviour
     void Start()
     {
         timeLeft = startTime;
-        TimerContainer.SetActive(true);
     }
     void Update()
     {
@@ -57,14 +54,15 @@ public class TImeManager : MonoBehaviour
     void PlayerGameOver()
     {
         gameOver = true;
-        HideTimer();
-        TimesupUI.SetActive(true);
         Time.timeScale = 0f;
+        StartCoroutine(UIdelay());
+    }
+    IEnumerator UIdelay()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        TimesupUI.SetActive(true);
+
     }
 
-    public void HideTimer()
-    {
-        TimerContainer.SetActive(false);
-        BonusContainer.SetActive(false);
-    }
+
 }
