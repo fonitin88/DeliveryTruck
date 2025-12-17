@@ -1,5 +1,7 @@
 #if UNITY_EDITOR
 using System.Collections.Generic;
+
+using UnityEditor;
 using UnityEngine;
 
 public static class MazeDecorator
@@ -59,7 +61,9 @@ public static class MazeDecorator
             var prefab = decorationPrefabs[Random.Range(0, decorationPrefabs.Count)];
             if (prefab == null) continue;
 
-            var instance = Object.Instantiate(prefab, pos, Quaternion.identity, decorationsRoot);
+            //var instance = Object.Instantiate(prefab, pos, Quaternion.identity, decorationsRoot);
+            var instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab, decorationsRoot);
+            instance.transform.SetPositionAndRotation(pos, Quaternion.identity);
             instance.transform.localScale = prefab.transform.localScale * randomScale;
         }
     }
