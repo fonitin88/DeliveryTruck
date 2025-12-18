@@ -10,7 +10,7 @@ public class Van_AllHealth : MonoBehaviour, IDamageable
     [SerializeField] GameObject modelHolder; // 只控制外觀
 
     int currentHealth;
-
+    bool isDead;
     public event Action<int> OnHealthChanged;
     public event Action OnDeath;
     public int GetCurrentHealth()
@@ -27,11 +27,16 @@ public class Van_AllHealth : MonoBehaviour, IDamageable
 
     public void TakeDamage(int amount)
     {
-        currentHealth -= amount;
-        OnHealthChanged?.Invoke(currentHealth);//當受到傷害時，血量改變了,通知 UI
+        if (isDead) return;
+        if (currentHealth > 0)
+        {
+            currentHealth -= amount;
+            OnHealthChanged?.Invoke(currentHealth);//當受到傷害時，血量改變了,通知 UI
+        }
 
         if (currentHealth <= 0)
         {
+            isDead = true;
             StartCoroutine(HandleDeath());
         }
     }

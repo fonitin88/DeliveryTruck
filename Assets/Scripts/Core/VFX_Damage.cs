@@ -4,33 +4,41 @@ using UnityEngine;
 public class VFX_Damage : MonoBehaviour
 {
     [SerializeField] int damage = 1;
-    float T;
-    float plusDamage;
+    [SerializeField] float damageDuring = 0.5f;
+    IDamageable target;
+    Coroutine damageCo;
 
     public void SetDamage(int value)
     {
         damage = value;
     }
-    //改成只要在這個collision 內 都會一直扣，離開才不會扣，每秒一直扣
-    //已經在trigger內
-    //每秒扣
+
     void OnTriggerEnter(Collider other)
     {
         //有沒有IDamageable 的 component
-        IDamageable target = other.GetComponent<IDamageable>();
+        target = other.GetComponent<IDamageable>();
         if (target != null)
         {
-
             target.TakeDamage(damage);
-
-
+            damageCo = StartCoroutine(damageLoop());
         }
-    }
-    IEnumerator damageDuring()
-    {
+        Debug.Log("Enter: " + other.name);
 
-        yield return new WaitForSeconds(T);
-        plusDamage += damage;
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (damageCo != null) StopCoroutine(damageCo);
+        damageCo = null;
+        target = null;
+    }
+    IEnumerator damageLoop()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(damageDuring);
+            if (target == null) yield break; //「我不要再當 Coroutine 了」
+            target.TakeDamage(damage);
+        }
 
     }
 }
